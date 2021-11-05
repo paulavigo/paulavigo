@@ -1,0 +1,25 @@
+close all;
+clear variables;
+clc;
+
+%% Definicion de parametros 
+ R2    = 2000;               % Ohmios
+ C2    = 10*10^-6;           % Faradios
+ tsim  = [0 2];              % Tiempo simulacion en segundos 
+ vc0   = [0 0];              % Condiciones Iniciales
+
+%% Simulacion con ODE 45
+ [t, vc]  = ode45(@filtro_butherworth, tsim, vc0);
+ vc2      = vc(:,1); 
+ vc2p     = vc(:,2);
+ vc1      = R2*C2*vc2p;
+
+%% Graficas                             
+ plot(t,vc1,'LineWidth', 2);   
+ title('Voltaje condensadores');
+ xlabel('Tiempo');
+ ylabel('voltaje');
+ hold on 
+ plot(t,vc2,'LineWidth', 2);
+ legend('VC1', 'VC2');
+ hold off
