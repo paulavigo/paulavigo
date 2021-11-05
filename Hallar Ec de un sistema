@@ -1,0 +1,33 @@
+clear all;      %COMANDOS DE CABECERA
+close all;
+clc
+
+R = 25;         %DEFINICION DE VARIABLES
+L = 0.1 * 10^-6;
+Cc = 4.7 * 10^-6;
+D = [0];
+A = [-R/L,1/L;-1/Cc,-13.1333/Cc];
+B = [0;13.1333/Cc];
+I = [1, 0;0, 1];
+C = [1, 0];
+
+s = tf('s');        % DEFINICION DE S
+
+Gs = calculoGs(A,B,C,D,I);          % PRIMERA FUNCION PARA EL CALCULO DE GS
+matriz_controlabilidad = matriz_control(A,B);   % SEGUNDA FUNCION QUE RETORNA LA MATRIZ DE CONTROLABILIDAD
+deter = determinante(matriz_controlabilidad);   % FUNCION QUE DETERMINA EL DETERMINANTE DE UNA MATRIZ 
+
+if (deter ~= 0)                                 % CONDICIONAL IF QUE COMPARA EL DETERMINANTE PARA DETERMINAR LA CONTROLABILIDAD
+    fprintf('El sistema es controlable\n');     % MENSAJE EN EL COMAND WINDOW
+else
+    fprintf('El sistema es no controlable\n');  % MENSAJE EN EL COMAND WINDOW 
+end
+
+obser = observabilidad(A,C);                    % FUNCION QUE RETORNA LA MATRIZ DE OBSERVABILIDAD
+observador = determinante(obser);               % FUNCION PARA DETERMINAR EL DETERMINANTE
+
+if (observador ~= 0)                            % CONDICIONAL IF QUE COMPARA EL DETERMINANTE PARA DETERMINAR LA OBSERVABILIDAD
+    fprintf('El sistema es observable\n');      % MENSAJE EN EL COMAND WINDOW
+else
+    fprintf('El sistema es no observable\n');   % MENSAJE EN EL COMAND WINDOW
+end
