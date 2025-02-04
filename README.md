@@ -1,5 +1,5 @@
-<h1 align="center">Hi 👋, I'm Paula <img height="40" src="https://emoji.gg/assets/emoji/7333-parrotdance.gif"></h1>
-<h3 align="center">A passionate Automatic Engineer (and a beginner daa scientist) developer from colombia </h3>
+<h1 align="center">Hi 👋, I'm Paula <img height="40" src="https://emoji.gg/assets/emoji/9165-robot.gif"></h1>
+<h3 align="center">A passionate Automatic Engineer and a beginner data scientist developer </h3>
 
 - 🔭 I’m currently working on my **Data science master**
 
